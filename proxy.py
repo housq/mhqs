@@ -42,7 +42,12 @@ class InjectionProxyRequest(ProxyRequest):
     def process(self):
         for subdomain in ('goshawk', 'goshawk4g', 'corsair', 'skyhawk', 'viper', 'crusader'):
             self.uri = self.uri.replace(subdomain + '.capcom.co.jp', 'localhost:8081')
-        ProxyRequest.process(self)
+        if self.uri.find('localhost:8081') == -1 and self.uri.find('conntest.nintendowifi.net') == -1 :
+            print "illegal url"
+            ProxyRequest.setResponseCode(self,400,'Bad Request')
+            ProxyRequest.finish(self)
+        else:
+            ProxyRequest.process(self)
 
 
 class TunnelProxyRequest(InjectionProxyRequest):
@@ -60,7 +65,11 @@ class TunnelProxyRequest(InjectionProxyRequest):
             self.setResponseCode(400, 'Bad Request')
             self.finish()
         else:
-            self.reactor.connectTCP(host, port, TunnelProtocolFactory(self))
+            if (host.find('nasc.nintendowifi.net') and port == 443) or (host.find('goshawk.capcom.co.jp') and port == 443):
+            	self.reactor.connectTCP(host, port, TunnelProtocolFactory(self))
+            else:
+                self.setResponseCode(400, 'Bad Request')
+                self.finish()
 
 
 class InjectionProxy(Proxy):
