@@ -1,3 +1,16 @@
+This is a repo forked from svanheulen/mhqs. To run a HTTP proxy server capable 
+to serving content to Monster Hunter 4G.
+
+I made some minor changes to the scripts. Because I only have a Japanese version
+3DS, I cannot test my new code on 3DS and MH4U in other languages. If you want
+my new scripts to run in other MH4U/4g, or you meet problems in using the code
+please contact me or report issues in this repo.
+
+
+Followed is the original README from svanheulen
+
+"
+
 This Python script will run a HTTP proxy server capable to serving content to
 Monster Hunter 4 Ultimate on the Nintendo 3DS.
 
@@ -26,3 +39,4 @@ settings on your 3DS.
 For information on the quest file format see this page:
   https://github.com/svanheulen/mhff/wiki/Monster-Hunter-4-Ultimate-Quests
 
+"

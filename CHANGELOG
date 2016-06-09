@@ -1,0 +1,9 @@
+June 9, 2016
+
+block all connections except for
+	1. nintendo 3DS wifi connection test, GET function
+	2. nintendo and capcom HTTPS connections when entering DOWNLOAD mode of MH4G (no idea what they are used for)
+	3. redirected connections for download edited quests
+This will make 3DS unable to connect to any other contents except for MH4G quest downloading. It's useful if you want
+to run this server in a public IP, but may cause inconvenience in other cases.
+I will try to add some attributes to make this feature optional.
